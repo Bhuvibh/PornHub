@@ -38,11 +38,11 @@ async def autopic(event):
         shutil.copy(downloaded_file_name, photo)
         im = Image.open(photo)
         file_test = im.rotate(counter, expand=False).save(photo, "PNG")
-        current_time = datetime.now().strftime("⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡ \n ⚡PH TIMEZØNÈ⚡ \n  Time: %H:%M:%S \n  Date: %d.%m.%y \n Owner: @r4v4n4 \n⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡")
+        current_time = datetime.now().strftime("  Time: %H:%M:%S \n  Date: %d.%m.%y \n")
         img = Image.open(photo)
         drawn_text = ImageDraw.Draw(img)
         fnt = ImageFont.truetype(FONT_FILE_TO_USE, 35)
-        drawn_text.text((200, 250), current_time, font=fnt, fill=(255, 255, 0))
+        drawn_text.text((200, 250), current_time, font=fnt, fill=(255, 255, 255))
         img.save(photo)
         file = await event.client.upload_file(photo)  # pylint:disable=E0602
         try:
@@ -50,7 +50,7 @@ async def autopic(event):
                 file
             ))
             os.remove(photo)
-            counter -= 30
+            counter -= 10
             await asyncio.sleep(20)
         except:
             return
